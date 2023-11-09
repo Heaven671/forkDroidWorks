@@ -22,28 +22,45 @@ pub fn run(args: &ArgMatches) -> DwResult<()> {
     );
     println!(" - uses-permissions:");
     for permission in &manifest.uses_permissions(package.resources())? {
-        println!("   - {}", permission.name().expect("permission name"));
+        match permission.name() {
+            Some(name) => println!("   - {}", name),
+            None => println!("   - Permission name not found"),
+        }
     }
     println!(" - uses-features:");
     for feature in &manifest.uses_features(package.resources())? {
-        println!("   - {}", feature.name().expect("feature name"));
+        match feature.name() {
+            Some(name) => println!("   - {}", name),
+            None => println!("   - Feature name not found"),
+        }
     }
     println!(" - activities:");
     for activity in &manifest.activities(package.resources())? {
-        println!("   - {}", activity.name().expect("activity name"));
+        match activity.name() {
+            Some(name) => println!("   - {}", name),
+            None => println!("   - Activity name not found"),
+        }
     }
     println!(" - services:");
     for service in &manifest.services(package.resources())? {
-        println!("   - {}", service.name().expect("service name"));
+        match service.name() {
+            Some(name) => println!("   - {}",name),
+            None => println!("   - Service name not found"),
+        }
     }
     println!(" - receivers:");
     for receiver in &manifest.receivers(package.resources())? {
-        println!("   - {}", receiver.name().expect("receiver name"));
+        match receiver.name() {
+            Some(name) => println!("   - {}", name),
+            None => println!("   - Receiver name not found"),
+        }
     }
     println!(" - providers:");
     for provider in &manifest.providers(package.resources())? {
-        println!("   - {}", provider.name().expect("provider name"));
+        match provider.name() {
+            Some(name) => println!("   - {}", name),
+            None => println!("   - Provider name not found"),
+        }
     }
-
     Ok(())
 }

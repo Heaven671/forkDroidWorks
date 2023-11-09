@@ -6,7 +6,7 @@
   },
   "build": {
     "devPath": "http://localhost:1420",
-    "distDir": "../dist",
+    "distDir": "../src",
     "beforeDevCommand": "make -C docs html && npm run dev",
     "beforeBuildCommand": "make -C docs html && npm run build",
     "withGlobalTauri": false
